@@ -4,22 +4,32 @@ import {useState} from 'react';
 const ExpenseForm = () => {
 
   
-    const [enteredTitle, setEnteredTitle] = useState('');
-    const [amountChange, setamountChange] = useState('');
-    const [dateChange, setdateChange] = useState('');
+    // const [enteredTitle, setEnteredTitle] = useState('');
+    // const [amountChange, setamountChange] = useState('');
+    // const [dateChange, setdateChange] = useState('');
 
+    //Enhanced useState - instead of calling useState 3 times - call it once. OBJECT style
+    //--> initally triggered with empty string 
+    const [userInput, setUserInput] = useState({
+        enteredTitle: "",
+        enteredAmont: "",
+        enteredDate: ""
+    })
 
     const titleChangeHandler = (event) => {
-        setEnteredTitle(event.target.value);
-        console.log("bazzzz title event",event.target.value);
+        // setEnteredTitle(event.target.value);
+        setUserInput({
+            ...setUserInput,
+            enteredTitle: event.target.value
+        })
     }
 
     const amountChangeHandler = (event) =>{
-        setamountChange(event.target.value)
+        // setamountChange(event.target.value)
     }
     
     const dateChangeHandler = (event) =>{
-        setdateChange(event.target.value)
+        // setdateChange(event.target.value)
     }
 
     return (
