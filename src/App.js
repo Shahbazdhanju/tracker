@@ -36,11 +36,11 @@ const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
   //   React.createElement(Expenses, { items: expenses })
   // );
 
-  const addExpenseHandler = (x) => {
+  const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      console.log("baz::",x)
+      console.log("baz::",expense)
       console.log("prevExpenses::",prevExpenses)
-      return [x, ...prevExpenses];
+      return [expense, ...prevExpenses];
     })
   };
 
