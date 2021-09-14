@@ -1,21 +1,32 @@
+import { useState } from "react";
 import "./NewExpense.css";
 import ExpenseForm from "./ExpenseForm";
 
 const NewExpense = (props) => {
+  const [isEditing, setIsEditing] = useState(false);
 
-    const SaveExpenseDataHandler = (enteredExpenseData) => {
-        const expenseData = {
-            ...enteredExpenseData,
-            id:  Math.random().toString()
-        }
-        console.log("newexp",expenseData)
-        props.onAddExpense(expenseData);
-    }
+  const SaveExpenseDataHandler = (enteredExpenseData) => {
+    const expenseData = {
+      ...enteredExpenseData,
+      id: Math.random().toString(),
+    };
+    console.log("newexp", expenseData);
+    props.onAddExpense(expenseData);
+  };
+  
+  const startEditinghandle =()=>{
+    setIsEditing(true);
+  }
+  const stopEditingHandler= () =>{
+    setIsEditing(false);
+  }
 
-
-    return <div className="new-expense">
-        <ExpenseForm onSaveExpenseData={SaveExpenseDataHandler} />
+  return (
+    <div className="new-expense">
+      {!isEditing && <button onClick={startEditinghandle}> Add New Expense </button>}
+      {isEditing && <ExpenseForm onSaveExpenseData={SaveExpenseDataHandler} onCancel={stopEditingHandler}/>}
     </div>
-}
+  );
+};
 
-export default NewExpense;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      
+export default NewExpense;
