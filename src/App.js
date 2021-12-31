@@ -1,8 +1,9 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import NewExpense from "./components/NewExpense/NewExpense";
 // import ExpensesFilter from "./components/ExpenseFilter/ExpensesFilter";
 
 import Expenses from "./components/Expenses/Expenses";
+// import AddNewButton from "./components/UI/AddNewButton/AddNewButton";
 
 const DUMMY_EXPENSE = [
   {
@@ -27,7 +28,7 @@ const DUMMY_EXPENSE = [
 ];
 
 const App = () => {
-const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
+  const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
 
   // return React.createElement(
   //   'div',
@@ -36,16 +37,18 @@ const [expenses, setExpenses] = useState(DUMMY_EXPENSE);
   //   React.createElement(Expenses, { items: expenses })
   // );
 
-  const addExpenseHandler = (x) => {
+  const addExpenseHandler = (expense) => {
     setExpenses((prevExpenses) => {
-      console.log("baz::",x)
-      console.log("prevExpenses::",prevExpenses)
-      return [x, ...prevExpenses];
-    })
+      console.log("baz::", expense);
+      console.log("prevExpenses::", prevExpenses);
+      return [expense, ...prevExpenses];
+    });
   };
 
   return (
     <div>
+      {/* <AddNewButton /> */}
+      <h1> Financial Tracker ....</h1>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
