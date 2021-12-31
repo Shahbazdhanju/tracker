@@ -48,6 +48,7 @@ const App = () => {
   return (
     <div>
       {/* <AddNewButton /> */}
+      <h1> Financial Tracker ....</h1>
       <NewExpense onAddExpense={addExpenseHandler} />
       <Expenses items={expenses} />
     </div>
